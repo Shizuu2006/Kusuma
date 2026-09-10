@@ -23,3 +23,18 @@ Aplikasi latihan untuk Editor Gambar
 Nama panggilan / akun GitHub: Kusuma / Shizuu2006
 ## Status
 Proyek awal perkuliahan.
+
+## Tujuan
+Aplikasi ini dikembangkan untuk mengedit gambar, termasuk memanipulasi rotasi, mengatur warna atau tingkat kecerahan, mengubah skala atau ukuran gambar, dan menambahkan filter.
+
+## Rencana Fitur
+1. Penyesuaian kecerahan dan filter negatif pada gambar.
+2. Fitur *scaling* untuk mengubah ukuran gambar.
+3. Fitur rotasi dan memperhalus tampilan gambar.
+
+## Cara Menjalankan
+Jalankan perintah berikut di terminal proyek untuk mengunduh dependensi dan menjalankan aplikasi:
+
+```bash
+flutter pub get
+flutter run
