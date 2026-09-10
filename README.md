@@ -1,4 +1,4 @@
-Aplikasi Editor Gambar
-untuk mengedit gambar 
-mengatur warna gambar, mengubah ukuran gambar, memperhalus gambar
-ui kurang menarik
+Judul : Aplikasi Editor Gambar
+Tujuan : untuk mengedit gambar 
+Fitur : mengatur warna gambar, mengubah ukuran gambar, memperhalus gambar
+Saran Perbaikan : ui kurang menarik
