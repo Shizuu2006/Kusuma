@@ -128,7 +128,7 @@ Widget _t3(bool fixed) => LayoutBuilder(
                       Expanded(
                         child: Container(
                           margin: const EdgeInsets.all(4),
-                          color: Colors.blue.withOpacity(0.3),
+                          color: Colors.blue.withValues(alpha: 0.3),
                           alignment: Alignment.center,
                           child: Text('Panel $i'),
                         ),
