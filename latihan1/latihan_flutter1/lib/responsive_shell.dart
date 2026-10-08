@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'courses_page.dart';
 import 'home_page.dart';
 import 'profile_page.dart';
@@ -57,9 +58,18 @@ class _ResponsiveShellState extends State<ResponsiveShell> {
                   selectedIndex: _index,
                   onDestinationSelected: _select,
                   destinations: const [
-                    NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-                    NavigationDestination(icon: Icon(Icons.school), label: 'Courses'),
-                    NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+                    NavigationDestination(
+                      icon: Icon(Icons.home),
+                      label: 'Home',
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.school),
+                      label: 'Courses',
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.person),
+                      label: 'Profile',
+                    ),
                   ],
                 ),
         );

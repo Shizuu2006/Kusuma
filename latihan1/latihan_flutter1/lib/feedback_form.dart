@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'identity.dart';
 
 class FeedbackForm extends StatefulWidget {
@@ -36,8 +37,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
         title: const Text('Konfirmasi'),
         content: const Text('Kirim feedback sekarang?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Batal')),
-          FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Kirim')),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Batal'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Kirim'),
+          ),
         ],
       ),
     );
@@ -49,7 +56,8 @@ class _FeedbackFormState extends State<FeedbackForm> {
 
     setState(() {
       _loading = false;
-      _result = '${_nameCtrl.text} (${_nimCtrl.text}): ${_commentCtrl.text.trim()}';
+      _result =
+          '${_nameCtrl.text} (${_nimCtrl.text}): ${_commentCtrl.text.trim()}';
     });
     ScaffoldMessenger.of(context)
         .showSnackBar(const SnackBar(content: Text('Data berhasil disimpan')));
@@ -87,8 +95,9 @@ class _FeedbackFormState extends State<FeedbackForm> {
               labelText: 'Komentar',
               border: OutlineInputBorder(),
             ),
-            validator: (v) =>
-                (v == null || v.trim().length < 5) ? 'Komentar minimal 5 karakter' : null,
+            validator: (v) => (v == null || v.trim().length < 5)
+                ? 'Komentar minimal 5 karakter'
+                : null,
           ),
           const SizedBox(height: 16),
           FilledButton(

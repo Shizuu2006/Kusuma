@@ -13,8 +13,10 @@ class IdentityBanner extends StatelessWidget {
       width: double.infinity,
       color: Theme.of(context).colorScheme.primaryContainer,
       padding: const EdgeInsets.all(12),
-      child: const Text('$studentId - $studentName',
-          style: TextStyle(fontWeight: FontWeight.bold)),
+      child: const Text(
+        '$studentId - $studentName',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

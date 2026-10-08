@@ -1,10 +1,13 @@
 // Demo Tahap 1,2,3,4,6,7,16. Tiap demo punya saklar "Fix" di AppBar:
 // OFF = kondisi bermasalah, ON = sudah diperbaiki.
 import 'package:flutter/material.dart';
+
 import 'identity.dart';
 
-const _id = Text('$studentId - $studentName',
-    style: TextStyle(fontWeight: FontWeight.bold));
+const _id = Text(
+  '$studentId - $studentName',
+  style: TextStyle(fontWeight: FontWeight.bold),
+);
 const _long =
     '$studentId - $studentName - teks sangat panjang untuk menguji overflow pada Row di layar sempit';
 typedef B = Widget Function(bool fixed);
@@ -61,15 +64,15 @@ class _CaseState extends State<_Case> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title, style: const TextStyle(fontSize: 14)),
-          actions: [
-            const Text('Fix'),
-            Switch(value: _fixed, onChanged: (v) => setState(() => _fixed = v)),
-          ],
-        ),
-        body: widget.builder(_fixed),
-      );
+    appBar: AppBar(
+      title: Text(widget.title, style: const TextStyle(fontSize: 14)),
+      actions: [
+        const Text('Fix'),
+        Switch(value: _fixed, onChanged: (v) => setState(() => _fixed = v)),
+      ],
+    ),
+    body: widget.builder(_fixed),
+  );
 }
 
 Widget _t1(bool fixed) {
@@ -79,77 +82,86 @@ Widget _t1(bool fixed) {
     child: const Text('$studentId - $studentName'),
   );
   return Row(
-    children: [
-      fixed ? Expanded(child: box) : SizedBox(width: 500, child: box),
-    ],
+    children: [fixed ? Expanded(child: box) : SizedBox(width: 500, child: box)],
   );
 }
 
 Widget _t2(bool fixed) => Builder(
-      builder: (context) {
-        final s = MediaQuery.of(context).size;
-        final o = MediaQuery.of(context).orientation;
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _id,
-              Text('Width: ${s.width.toStringAsFixed(0)}'),
-              Text('Height: ${s.height.toStringAsFixed(0)}'),
-              Text('Orientation: $o'),
-              Text(
-                s.width < 600 ? 'Compact' : 'Wide',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            ],
+  builder: (context) {
+    final s = MediaQuery.of(context).size;
+    final o = MediaQuery.of(context).orientation;
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _id,
+          Text('Width: ${s.width.toStringAsFixed(0)}'),
+          Text('Height: ${s.height.toStringAsFixed(0)}'),
+          Text('Orientation: $o'),
+          Text(
+            s.width < 600 ? 'Compact' : 'Wide',
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-        );
-      },
+        ],
+      ),
     );
+  },
+);
 
 Widget _t3(bool fixed) => LayoutBuilder(
-      builder: (context, c) {
-        final w = c.maxWidth;
-        final n = w < 600 ? 1 : (w < 840 ? 2 : 3);
-        final name = ['Compact', 'Medium', 'Expanded'][n - 1];
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _id,
-              Text('Kategori: $name', style: Theme.of(context).textTheme.headlineSmall),
-              const SizedBox(height: 12),
-              Expanded(
-                child: Row(
-                  children: [
-                    for (var i = 1; i <= n; i++)
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.all(4),
-                          color: Colors.blue.withValues(alpha: 0.3),
-                          alignment: Alignment.center,
-                          child: Text('Panel $i'),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-            ],
+  builder: (context, c) {
+    final w = c.maxWidth;
+    final n = w < 600 ? 1 : (w < 840 ? 2 : 3);
+    final name = ['Compact', 'Medium', 'Expanded'][n - 1];
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _id,
+          Text(
+            'Kategori: $name',
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-        );
-      },
+          const SizedBox(height: 12),
+          Expanded(
+            child: Row(
+              children: [
+                for (var i = 1; i <= n; i++)
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.all(4),
+                      color: Colors.blue.withValues(alpha: 0.3),
+                      alignment: Alignment.center,
+                      child: Text('Panel $i'),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
+  },
+);
 
 Widget _t4(bool fixed) {
-  const skills = ['Flutter', 'Dart', 'Git', 'Firebase', 'UI Design', 'REST API', 'SQL'];
+  const skills = [
+    'Flutter',
+    'Dart',
+    'Git',
+    'Firebase',
+    'UI Design',
+    'REST API',
+    'SQL',
+  ];
   Widget box(String t, Color c) => Container(
-        height: 100,
-        color: c,
-        alignment: Alignment.center,
-        child: Text(t),
-      );
+    height: 100,
+    color: c,
+    alignment: Alignment.center,
+    child: Text(t),
+  );
   final chips = skills.map((e) => Chip(label: Text(e))).toList();
   return SingleChildScrollView(
     padding: const EdgeInsets.all(16),
@@ -200,62 +212,67 @@ Widget _t6(bool fixed) {
 }
 
 Widget _t7(bool fixed) => Builder(
-      builder: (context) => Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _id,
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const _Detail()),
-              ),
-              child: const Text('Buka Detail'),
-            ),
-          ],
+  builder: (context) => Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _id,
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const _Detail()),
+          ),
+          child: const Text('Buka Detail'),
         ),
-      ),
-    );
+      ],
+    ),
+  ),
+);
 
 class _Detail extends StatelessWidget {
   const _Detail();
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text('Detail')),
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _id,
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Kembali'),
-              ),
-            ],
+    appBar: AppBar(title: const Text('Detail')),
+    body: Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _id,
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Kembali'),
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }
 
 Widget _a(bool fixed) => Padding(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          const Icon(Icons.info),
-          const SizedBox(width: 8),
-          fixed ? const Expanded(child: Text(_long)) : const Text(_long),
-        ],
-      ),
-    );
+  padding: const EdgeInsets.all(16),
+  child: Row(
+    children: [
+      const Icon(Icons.info),
+      const SizedBox(width: 8),
+      fixed ? const Expanded(child: Text(_long)) : const Text(_long),
+    ],
+  ),
+);
 
 Widget _b(bool fixed) {
   final list = ListView(
     children: List.generate(30, (i) => ListTile(title: Text('Item $i'))),
   );
-  return Column(children: [_id, fixed ? Expanded(child: list) : list]);
+  return Column(
+    children: [
+      _id,
+      fixed ? Expanded(child: list) : list,
+    ],
+  );
 }
 
 Widget _c(bool fixed) {
@@ -296,15 +313,15 @@ class _DblState extends State<_Dbl> {
   Future<void> _open() async {
     if (widget.fixed && _busy) return; // guard anti double-tap
     _busy = true;
-    await Navigator.push(context, MaterialPageRoute(builder: (_) => const _Detail()));
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const _Detail()),
+    );
     _busy = false;
   }
 
   @override
   Widget build(BuildContext context) => Center(
-        child: ElevatedButton(
-          onPressed: _open,
-          child: const Text('Buka halaman'),
-        ),
-      );
+    child: ElevatedButton(onPressed: _open, child: const Text('Buka halaman')),
+  );
 }

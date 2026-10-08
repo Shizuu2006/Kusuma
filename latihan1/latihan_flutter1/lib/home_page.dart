@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'course_data.dart';
 import 'identity.dart';
 
@@ -21,7 +22,28 @@ class HomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 8),
-                Text('Jelajahi ${courses.length} course yang tersedia.'),
+                Text(
+                  'Jelajahi ${courses.length} course, buka detail, dan tandai course favorite.',
+                ),
+                const SizedBox(height: 16),
+                Card(
+                  margin: EdgeInsets.zero,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.school, size: 36),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Tahap 15 mengintegrasikan layout responsif, navigasi, passing data, interaksi, form, dan feedback.',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 Wrap(
                   spacing: 8,
